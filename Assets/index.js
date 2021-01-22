@@ -34,3 +34,33 @@ var questions = [
         correct: 'indexes',
     },
 ];
+
+startButton.addEventListener("click", function setTime() {
+    // Sets interval in variable
+    var timerInterval = setInterval(function () {
+        timeLeft--;
+        timeEl.textContent = timeLeft;
+        var h1El = document.createElement("h1");
+        var btEl = document.createElement("button");
+        questionBox.appendChild(h1El);
+        choiceButton.appendChild(btEl);
+
+        for (i = 0; i < questions.length; i++)
+
+            if (secondsLeft === 0) {
+                // Stops execution of action at set interval
+                clearInterval(timerInterval);
+                // Calls function to create and append image
+                sendMessage();
+            }
+
+    }, 1000);
+});
+
+function sendMessage() {
+    timeEl.textContent = " ";
+    mainEl.appendChild(imgEl);
+
+}
+
+setTime();
